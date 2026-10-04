@@ -1,0 +1,52 @@
+diff --git a/src/AsciiRenderer.java b/src/AsciiRenderer.java
+new file mode 100644
+index 0000000..645260b
+--- /dev/null
++++ b/src/AsciiRenderer.java
+@@ -0,0 +1,11 @@
++public class AsciiRenderer implements Renderer {
++    @Override
++    public String renderCircle(int radius) {
++        return "ASCII circle radius=" + radius;
++    }
++
++    @Override
++    public String renderSquare(int side) {
++        return "ASCII square side=" + side;
++    }
++}
+diff --git a/src/Main.java b/src/Main.java
+index c7d4a20..dc8f981 100644
+--- a/src/Main.java
++++ b/src/Main.java
+@@ -12,6 +12,7 @@ public class Main {
+ 
+         Renderer vector = new VectorRenderer();
+         Renderer raster = new RasterRenderer();
++        Renderer ascii = new AsciiRenderer();
+ 
+         // T1: Circle with VectorRenderer
+         Circle circleVector = new Circle("circle-2", 2, vector);
+@@ -75,7 +76,21 @@ public class Main {
+             System.out.println("  expected: same object, same id/radius, Vector before, Raster after");
+         }
+ 
+-        System.out.println("SUMMARY: " + passed + "/5 PASS");
++        // T6: Circle with the new AsciiRenderer
++        Circle circleAscii = new Circle("circle-2", 2, ascii);
++        if (check("T6", "Circle + AsciiRenderer", circleAscii.execute(),
++                "ASCII circle radius=2")) {
++            passed++;
++        }
++
++        // T7: Square with the new AsciiRenderer
++        Square squareAscii = new Square("square-3", 3, ascii);
++        if (check("T7", "Square + AsciiRenderer", squareAscii.execute(),
++                "ASCII square side=3")) {
++            passed++;
++        }
++
++        System.out.println("SUMMARY: " + passed + "/7 PASS");
+     }
+ 
+     private static boolean check(String testId, String classes, String actual, String expected) {

@@ -12,6 +12,7 @@ public class Main {
 
         Renderer vector = new VectorRenderer();
         Renderer raster = new RasterRenderer();
+        Renderer ascii = new AsciiRenderer();
 
         // T1: Circle with VectorRenderer
         Circle circleVector = new Circle("circle-2", 2, vector);
@@ -75,7 +76,21 @@ public class Main {
             System.out.println("  expected: same object, same id/radius, Vector before, Raster after");
         }
 
-        System.out.println("SUMMARY: " + passed + "/5 PASS");
+        // T6: Circle with the new AsciiRenderer
+        Circle circleAscii = new Circle("circle-2", 2, ascii);
+        if (check("T6", "Circle + AsciiRenderer", circleAscii.execute(),
+                "ASCII circle radius=2")) {
+            passed++;
+        }
+
+        // T7: Square with the new AsciiRenderer
+        Square squareAscii = new Square("square-3", 3, ascii);
+        if (check("T7", "Square + AsciiRenderer", squareAscii.execute(),
+                "ASCII square side=3")) {
+            passed++;
+        }
+
+        System.out.println("SUMMARY: " + passed + "/7 PASS");
     }
 
     private static boolean check(String testId, String classes, String actual, String expected) {
