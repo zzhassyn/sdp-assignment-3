@@ -3,6 +3,8 @@
 **Student:** Zhassyn Zhalynuly  
 **Group:** SE-2527  
 **Topic:** A - Drawing  
+**Repository URL:** https://github.com/zzhassyn/sdp-assignment-3  
+**Base commit:** `c0dd268610b49cfb31743fd93d06cc4e0fd35778`  
 
 > The code is intentionally small and beginner-friendly. Each class has one clear job, and the demo uses simple fixed values from the assignment.
 
@@ -45,7 +47,7 @@ This means we can combine any shape with any renderer without creating classes s
 Run these commands from the project folder:
 
 ```bash
-javac --release 17 -encoding UTF-8 -d out -sourcepath src src/Main.java
+javac --release 17 -encoding UTF-8 -d out "@sources.txt"
 java -cp out Main --demo
 ```
 
@@ -79,12 +81,12 @@ Only the renderer reference changes. The Circle object, its ID, and its radius s
 
 ## 7. Independent extension
 
-The base solution has Vector and Raster renderers. The extension adds only:
+The base commit contains the two-by-two solution with Vector and Raster renderers. The next commit adds only:
 
 - new `src/AsciiRenderer.java`;
 - T6 and T7 code in `src/Main.java`.
 
-The existing `Shape`, `Circle`, `Square`, `Renderer`, `VectorRenderer`, and `RasterRenderer` files are unchanged by the extension.
+The existing `Shape`, `Circle`, `Square`, `Renderer`, `VectorRenderer`, and `RasterRenderer` files are unchanged by the extension. See `extension.diff`.
 
 ## 8. Bridge vs Adapter
 
@@ -97,5 +99,8 @@ This project uses Bridge because shapes and renderers are two planned independen
 ## 9. Files
 
 - `src/` - Java source files.
+- `sources.txt` - source list for compilation.
+- `demo-output.txt` - real output of T1-T7.
+- `extension.diff` - source diff for the I3 extension.
 - `uml.png` - UML diagram matching the code.
-- `report.pdf` - short English report.
+
